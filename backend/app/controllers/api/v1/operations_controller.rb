@@ -1,4 +1,4 @@
-class OperationController < ApplicationController
+class Api::V1::OperationsController < ApplicationController
   # POST api/v1/add
   def add
     render json: { status: 200, result: first + second }
