@@ -4,7 +4,7 @@ import { useState } from "react";
 function OperationComponent() {
   const [first, setFirst] = useState();
   const [second, setSecond] = useState();
-  const [result, setResult] = useState();
+  const [result, setResult] = useState("Please enter two numbers and choose an operation");
   const [error, setError] = useState();
 
   function handleFirstChange(e) {
@@ -58,24 +58,33 @@ function OperationComponent() {
   }
 
   return (
-    <div>
-      <label>First number:</label>
-      <input
-        type="number"
-        onChange={(e) => handleFirstChange(e)}
-        value={first}
-      />
+    <div className="m-auto mt-36 max-w-96 flex flex-col rounded-xl px-20 py-12 bg-white">
+    <h2 className="my-6 text-center font-bold text-2xl"><p>GovTech CFT OA</p> <p>Darren Chan </p> </h2>
+      <div className="flex flex-col">
+        <label className="mt-2 mb-3">First number:</label>
+        <input
+          className='py-3 px-4 block w-full outline-black outline outline-1 rounded-lg' 
+          type="number"
+          onChange={(e) => handleFirstChange(e)}
+          value={first}
+        />
+      </div>
 
-      <label>Second number:</label>
-      <input
-        type="number"
-        onChange={(e) => handleSecondChange(e)}
-        value={second}
-      />
+      <div className="flex flex-col">
+        <label className="my-3">Second number:</label>
+        <input
+          className='py-3 px-4 block w-full outline-black outline outline-1 rounded-lg' 
+          type="number"
+          onChange={(e) => handleSecondChange(e)}
+          value={second}
+        />
+      </div>
 
-      <button onClick={submitAdd}> Add </button>
-      <button onClick={submitSubtract}> Subtract </button>
-      <div>{result}</div>
+      <div className="flex justify-between mt-12">
+        <button onClick={submitAdd} className="px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-300"> Add </button>
+        <button onClick={submitSubtract} className="px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-300"> Subtract </button>
+      </div>
+      <div className="text-center mt-5"><p>Your answer is:</p>{result}</div>
     </div>
   );
 }
