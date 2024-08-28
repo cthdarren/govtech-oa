@@ -17,13 +17,13 @@ class Api::V1::OperationsController < ApplicationController
   end
 
   def assign_vars
-    if params[:first].nil?
+    if params[:first].nil? || params[:first] == ""
       @first = '0'
     else
       @first = params[:first].strip
     end
 
-    if params[:second].nil?
+    if params[:second].nil? || params[:second] == ""
       @second = '0'
     else
       @second = params[:second].strip
