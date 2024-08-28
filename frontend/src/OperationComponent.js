@@ -19,7 +19,7 @@ function OperationComponent() {
 
   function submitAdd() {
     // Referenced from: https://stackoverflow.com/questions/35325370/how-do-i-post-a-x-www-form-urlencoded-request-using-fetch
-    fetch("http://localhost:3000/api/v1/add", {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -35,7 +35,7 @@ function OperationComponent() {
 
   function submitSubtract() {
     // Referenced from: https://stackoverflow.com/questions/35325370/how-do-i-post-a-x-www-form-urlencoded-request-using-fetch
-    fetch("http://localhost:3000/api/v1/subtract", {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/subtract", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
