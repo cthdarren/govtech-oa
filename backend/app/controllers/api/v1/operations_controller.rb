@@ -17,12 +17,17 @@ class Api::V1::OperationsController < ApplicationController
   end
 
   def assign_vars
-    if params[:first].nil? || params[:second].nil?
-      render json: { error: 'Please ensure that both fields are filled.' }, status: 400
-      return
+    if params[:first].nil?
+      @first = '0'
+    else
+      @first = params[:first].strip
     end
-    @first = params[:first].strip
-    @second = params[:second].strip
+
+    if params[:second].nil?
+      @second = '0'
+    else
+      @second = params[:second].strip
+    end
 
     if @first.to_i.to_s == @first && @second.to_i.to_s == @second
       @first = @first.to_i
