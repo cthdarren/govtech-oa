@@ -68,7 +68,7 @@ function OperationComponent() {
       <div className="flex flex-col">
         <label className="mt-2 mb-3">First number:</label>
         <input
-          className="py-3 px-4 block w-full outline-black outline outline-1 rounded-lg"
+          className="py-2 px-4 block w-full outline-black outline outline-1 rounded-lg"
           type="number"
           onChange={(e) => handleFirstChange(e)}
           value={first}
@@ -78,7 +78,7 @@ function OperationComponent() {
       <div className="flex flex-col">
         <label className="my-3">Second number:</label>
         <input
-          className="py-3 px-4 block w-full outline-black outline outline-1 rounded-lg"
+          className="py-2 px-4 block w-full outline-black outline outline-1 rounded-lg"
           type="number"
           onChange={(e) => handleSecondChange(e)}
           value={second}
@@ -88,13 +88,13 @@ function OperationComponent() {
       <div className="flex justify-between mt-12">
         <button
           onClick={submitAdd}
-          className="px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-300"
+          className="px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-400"
         >
           Add
         </button>
         <button
           onClick={submitSubtract}
-          className="px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-300"
+          className="bg-gray-800 text-white px-3 py-2 min-w-24 rounded outline outline-1 outline-black hover:bg-gray-400 hover:text-black"
         >
           Subtract
         </button>
