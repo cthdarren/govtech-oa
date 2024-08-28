@@ -28,9 +28,13 @@ function OperationComponent() {
         first: first,
         second: second,
       }),
-    }).then((response) => {
-      displayResult(response);
-    });
+    })
+      .then((response) => {
+        displayResult(response);
+      })
+      .catch(() => {
+        setError("Server Error");
+      });
   }
 
   function submitSubtract() {
@@ -44,9 +48,13 @@ function OperationComponent() {
         first: first,
         second: second,
       }),
-    }).then((response) => {
-      displayResult(response);
-    });
+    })
+      .then((response) => {
+        displayResult(response);
+      })
+      .catch(() => {
+        setError("Server Error");
+      });
   }
 
   function displayResult(response) {
@@ -103,7 +111,11 @@ function OperationComponent() {
         <p>Your answer is:</p>
         {result}
       </div>
-      {error == "" ? <></> : <div className="text-red-800 text-center mt-5">Error: {error}</div>}
+      {error == "" ? (
+        <></>
+      ) : (
+        <div className="text-red-800 text-center mt-5">Error: {error}</div>
+      )}
     </div>
   );
 }
