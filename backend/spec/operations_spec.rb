@@ -1,16 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::OperationsController, type: :controller do
-
-  shared_examples 'invalid input' do
-    it 'returns a 400' do
-      expect(response).to have_http_status(400)
-      json_response = JSON.parse(response.body)
-      expect(json_response['error']).to eq('Invalid input. Please ensure both fields only contain numbers.')
-    end
+  def invalid_input
+    expect(response).to have_http_status(400)
+    json_response = JSON.parse(response.body)
+    expect(json_response['error']).to eq('Invalid input. Please ensure both fields only contain numbers.')
   end
 
-  shared_examples 'empty input' do
+  shared_examples 'empty input' do |endpoint|
+    before { post endpoint, params: params }
     it 'returns a 400' do
       expect(response).to have_http_status(400)
       json_response = JSON.parse(response.body)
@@ -18,7 +16,7 @@ RSpec.describe Api::V1::OperationsController, type: :controller do
     end
   end
 
-  shared_examples 'empty input' do
+  shared_examples 'empty input' do |endpoint|
     it 'returns a 400' do
       expect(response).to have_http_status(400)
       json_response = JSON.parse(response.body)
@@ -37,13 +35,13 @@ RSpec.describe Api::V1::OperationsController, type: :controller do
     context 'there is an invalid character in the input field' do
       it 'returns an invalid input error if the first field is invalid' do
         post :add, params: { first: '12%', second: 2 }
+        invalid_input
       end
-      it_behaves_like 'invalid input'
 
       it 'returns an invalid input error if the second field is invalid' do
         post :add, params: { first: 12, second: "' or 1 == 1 --" }
+        invalid_input
       end
-      it_behaves_like 'invalid input'
     end
 
     context 'there is an empty input field' do
@@ -52,7 +50,7 @@ RSpec.describe Api::V1::OperationsController, type: :controller do
       end
       it_behaves_like 'empty input'
 
-      it 'returns an empty field error if the second field is empty' do
+      it 'returns an error if the second field is empty' do
         post :add, params: { first: 2 }
       end
       it_behaves_like 'empty input'
@@ -70,13 +68,13 @@ RSpec.describe Api::V1::OperationsController, type: :controller do
     context 'there is an invalid character in the input field' do
       it 'returns an invalid input error if the first field is invalid' do
         post :subtract, params: { first: '12%', second: 2 }
+      invalid_input
       end
-      it_behaves_like 'invalid input'
 
       it 'returns an invalid input error if the second field is invalid' do
         post :subtract, params: { first: 12, second: "' or 1 == 1 --" }
+      invalid_input
       end
-      it_behaves_like 'invalid input'
     end
 
     context 'there is an empty input field' do
