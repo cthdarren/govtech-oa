@@ -13,6 +13,21 @@ class Api::V1::OperationsController < ApplicationController
     render json: { result: display_result(result) }, status: 200
   end
 
+  def valid_number?(num)
+    # I use float here because I don't want people to use things like 2/3r
+    Float(num) rescue false
+  end
+
+  def display_result(number)
+    return 0 if number.nil?
+
+    if (number % 1).zero? # This means that it's a whole number
+      # Don't display the .0 after the whole number
+      number = number.to_i
+    end
+    number.to_f
+  end
+
   private
 
   def allowed_params
@@ -38,18 +53,5 @@ class Api::V1::OperationsController < ApplicationController
     else
       render json: { error: 'Invalid input. Please ensure both fields only contain numbers.' }, status: 400
     end
-  end
-
-  def valid_number?(num)
-    # I use float here because I don't want people to use things like 2/3r
-    Float(num) rescue false
-  end
-
-  def display_result(number)
-    if (number % 1).zero? # This means that it's a whole number
-      # Don't display the .0 after the whole number
-      number = number.to_i
-    end
-    number.to_f
   end
 end
