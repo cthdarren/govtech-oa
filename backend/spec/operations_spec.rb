@@ -77,6 +77,12 @@ RSpec.describe Api::V1::OperationsController, type: :controller do
       valid_input(:subtract, { first: 10, second: 5 }, 5)
     end
 
+    context 'decimal numbers' do
+      it 'subtracts the difference between two decimal numbers' do
+        valid_input(:subtract, {first: 0.4, second: 0.1}, 0.3)
+      end
+    end
+
     context 'there is an invalid character in the input field' do
       it 'returns an invalid input error if the first field is invalid' do
         post :subtract, params: { first: '12%', second: 2 }

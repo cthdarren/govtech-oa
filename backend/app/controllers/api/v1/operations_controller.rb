@@ -1,13 +1,16 @@
+require 'bigdecimal/util'
 class Api::V1::OperationsController < ApplicationController
   before_action :assign_vars, :allowed_params
   # POST api/v1/add
   def add
-    render json: { result: @first + @second }, status: 200
+    result = @first + @second
+    render json: { result: display_result(result) }, status: 200
   end
 
   # POST api/v1/subtract
   def subtract
-    render json: { result: @first - @second }, status: 200
+    result = @first - @second
+    render json: { result: display_result(result) }, status: 200
   end
 
   private
@@ -30,14 +33,23 @@ class Api::V1::OperationsController < ApplicationController
     end
 
     if valid_number?(@first) && valid_number?(@second)
-      @first = @first.to_f
-      @second = @second.to_f
+      @first = @first.to_d
+      @second = @second.to_d
     else
       render json: { error: 'Invalid input. Please ensure both fields only contain numbers.' }, status: 400
     end
   end
 
   def valid_number?(num)
+    # I use float here because I don't want people to use things like 2/3r
     Float(num) rescue false
+  end
+
+  def display_result(number)
+    if (number % 1).zero? # This means that it's a whole number
+      # Don't display the .0 after the whole number
+      number = number.to_i
+    end
+    number.to_f
   end
 end
