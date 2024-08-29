@@ -18,8 +18,8 @@ if ENV["RAILS_ENV"] == "production"
   workers worker_count if worker_count > 1
 
   ssl_bind '0.0.0.0', '443', {
-    key: "/etc/letsencrypt/live/govtech-oa-backend.darren-chan.com/privkey.pem",
-    cert: "/etc/letsencrypt/live/govtech-oa-backend.darren-chan.com/fullchain.pem",
+    key: "/etc/cert/privkey.pem",
+    cert: "/etc/cert/fullchain.pem",
   verify_mode: 'none'
 }
 end
@@ -29,7 +29,7 @@ end
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-port ENV.fetch("PORT") { 3000 }
+port ENV.fetch("PORT") { 443 }
 
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch("RAILS_ENV") { "development" }
