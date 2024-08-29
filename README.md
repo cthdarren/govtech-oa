@@ -7,23 +7,28 @@ Backend deployed on DigitalOcean Droplet at
 [govtech-oa-backend.darren-chan.com](https://govtech-oa-backend.darren-chan.com)
 
 ## Table of Contents
-1. [API Documentation](#api-documentation)
-   - [Endpoints](#endpoints)
-     - [Add Numbers](#1-add-numbers)
-     - [Subtract Numbers](#2-subtract-numbers)
-2. [Dependencies](#dependencies)
-3. [To Run (Locally)](#to-run-locally)
+
+1. [Testing and Coverage](#testing-and-coverage)
+2. [API Documentation](#api-documentation)
+   - [1. Add Numbers](#1-add-numbers)
+   - [2. Subtract Numbers](#2-subtract-numbers)
+3. [Dependencies](#dependencies)
+4. [To Run (Locally)](#to-run-locally)
    - [Frontend](#frontend)
    - [Backend](#backend)
-4. [To Run (Production)](#to-run-production)
+5. [To Run (Production)](#to-run-production)
    - [Frontend](#frontend-1)
    - [Backend](#backend-1)
-5. [What I Learned](#what-i-learned)
+6. [What I Learned](#what-i-learned)
 
 
-# API Documentation
+## Testing and Coverage
+Performed simple unit tests and routing tests with RSpec to achieve 100% code coverage on the backend
 
-## Endpoints
+![image](https://github.com/user-attachments/assets/94ea2b9e-dba5-4c0b-b3d0-0f65f4786c53)
+
+
+## API Documentation
 
 ### 1. Add Numbers
 
