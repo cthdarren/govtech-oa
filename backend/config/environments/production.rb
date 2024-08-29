@@ -4,6 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts << "govtech-oa-backend.darren-chan.com"
+  config.hosts << "165.232.172.27"
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
