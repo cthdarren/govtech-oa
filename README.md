@@ -23,9 +23,9 @@ Backend deployed on DigitalOcean Droplet at
 
 
 ## Testing and Coverage
-Performed simple unit tests and routing tests with RSpec to achieve 100% code coverage on the backend
+Performed simple unit tests and integration tests with RSpec to achieve 100% code coverage on the backend
 
-![image](https://github.com/user-attachments/assets/94ea2b9e-dba5-4c0b-b3d0-0f65f4786c53)
+![image](https://github.com/user-attachments/assets/514cc496-2205-4e9f-b8bc-5518632b658c)
 
 
 ## API Documentation
@@ -152,4 +152,5 @@ Same as development.
 ## What I Learned
 - Docker is amazing.
 - You can't have a web app running on SSL making an API call using HTTP (Mixed Content).
+- Floating point arithmetic and accuracy
 
