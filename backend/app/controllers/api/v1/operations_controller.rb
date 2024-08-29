@@ -29,11 +29,15 @@ class Api::V1::OperationsController < ApplicationController
       @second = params[:second].strip
     end
 
-    if @first.to_i.to_s == @first && @second.to_i.to_s == @second
-      @first = @first.to_i
-      @second = @second.to_i
+    if valid_number?(@first) && valid_number?(@second)
+      @first = @first.to_f
+      @second = @second.to_f
     else
       render json: { error: 'Invalid input. Please ensure both fields only contain numbers.' }, status: 400
     end
+  end
+
+  def valid_number?(num)
+    Float(num) rescue false
   end
 end
