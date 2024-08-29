@@ -152,5 +152,6 @@ Same as development.
 ## What I Learned
 - Docker is amazing.
 - You can't have a web app running on SSL making an API call using HTTP (Mixed Content).
-- Floating point arithmetic and accuracy
+- Floating point arithmetic and accuracy.
+- Manual deployments on a backend server with docker.
 
